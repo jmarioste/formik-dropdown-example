@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import React from "react";
 import FormikCustomDropdown from "components/FormikCustomDropdown";
 import { Formik, Form } from "formik";
+console.log("Hello");
 const HomePage: NextPage = () => {
   return (
     <div className={"container"}>
