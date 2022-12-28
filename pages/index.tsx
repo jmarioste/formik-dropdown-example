@@ -1,19 +1,22 @@
 import { NextPage } from "next";
-import React, { useState } from "react";
-
-import CustomDropdown from "components/CustomDropdown";
-
+import React from "react";
+import FormikCustomDropdown from "components/FormikCustomDropdown";
+import { Formik, Form } from "formik";
 const HomePage: NextPage = () => {
-  const [val, setVal] = useState("");
-  const [val2, setVal2] = useState(0);
   return (
     <div className={"container"}>
       <div className="grid place-content-center min-h-screen">
-        <div className="flex flex-col gap-2">
-          <h1>Welcome to Formik Dropdown Example</h1>
-          {/* 👇 Uses string type for the value */}
-          <div>
-            <CustomDropdown
+        <Formik
+          onSubmit={(values) => alert(JSON.stringify(values, null, 4))}
+          initialValues={{
+            position: "",
+            salary: 0,
+          }}
+        >
+          <Form className="flex flex-col gap-2">
+            <h1>Welcome to Formik Dropdown Example</h1>
+            <FormikCustomDropdown
+              name="position"
               options={[
                 {
                   label: "Software Engineer",
@@ -24,15 +27,9 @@ const HomePage: NextPage = () => {
                   value: "React Developer",
                 },
               ]}
-              value={val}
-              onChange={(value) => {
-                setVal(value);
-              }}
             />
-          </div>
-          {/*👇 Uses number type for the value */}
-          <div>
-            <CustomDropdown
+            <FormikCustomDropdown
+              name="salary"
               options={[
                 {
                   label: "$2000/month",
@@ -43,13 +40,12 @@ const HomePage: NextPage = () => {
                   value: 4000,
                 },
               ]}
-              value={val2}
-              onChange={(value) => {
-                setVal2(value);
-              }}
             />
-          </div>
-        </div>
+            <button className="btn" type="submit">
+              Submit Form
+            </button>
+          </Form>
+        </Formik>
       </div>
     </div>
   );
