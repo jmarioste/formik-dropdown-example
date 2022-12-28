@@ -1,15 +1,13 @@
 import { NextPage } from "next";
 import React, { useState } from "react";
 
-import { Inter } from "@next/font/google";
 import CustomDropdown from "components/CustomDropdown";
-const inter = Inter();
 
 const HomePage: NextPage = () => {
   const [val, setVal] = useState("");
   const [val2, setVal2] = useState(0);
   return (
-    <div className={"container " + inter.className}>
+    <div className={"container"}>
       <div className="grid place-content-center min-h-screen">
         <div className="flex flex-col gap-2">
           <h1>Welcome to Formik Dropdown Example</h1>
